@@ -11,7 +11,7 @@ For example:
             "aaac"   ==> "aa";
             "ababac" ==> "aa";
             "bbbbd"  ==> "d".
-Further£ºHow about "aaccac"?
+Further: How about "aaccac"?
 
 */
 
