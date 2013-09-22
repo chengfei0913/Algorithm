@@ -1,0 +1,14 @@
+Problem Description:
+    There are 11 bottles of wine, one of them is poisonous. One would die three days after drinking the 
+    poisonous one. Now we have only 3 days to test all the bottles to find 9 bottles which are safe by
+    using mice. What is the minimum quantity of mice?
+    
+Solutions:
+    We can divide 11 bottles into 6 groups(each group has two bottles, but the last has one). Marking the 
+    groups as 000, 001, 010, 011, 100, 101.
+    Let mouse A to drink the wine in group 001, 011 and 101,
+    mouse B to drink the wine in group 010, 011,
+    and mouse C to drink the wine in group 100, 101.
+    
+    For example, if both mouse A and C died, we get a conclusion that the wine in group 101 is unsafe.
+    And the left(9 bottles of wine) is safe.
