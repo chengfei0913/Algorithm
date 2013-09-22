@@ -3,7 +3,7 @@ using namespace std;
 
 /*
 Problem Description:
-        For three given string:a, b and c. To decide whether c is interleave of 
+        For three given strings:a, b and c. To decide whether c is interleave of 
         a and b, that is to say, c contains all the characters that in a and b, 
         and they have the same order. For example:
             a = "ef"    b = "gh"  c = "egfh"       return true
