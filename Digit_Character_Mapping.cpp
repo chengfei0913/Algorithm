@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+/* http://codepad.org/3OptZJ53  */
+
 void digit_to_character(char* s, char* new_s, int idx)
 {
     if((s == NULL) || (*s == '\0'))
