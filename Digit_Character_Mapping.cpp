@@ -2,6 +2,14 @@
 using namespace std;
 
 /* http://codepad.org/3OptZJ53  */
+/*
+Problem Description:
+    For a given string of number, mapping the digits to characters.
+    1-->a, 2-->b,...25-->y, 26-->z
+    For example: string"12259" can be mapped to "abbei"/"abyi"/....
+    Now, for a numeric string, judge weather it can be mapped.
+    If yes, give all the possible results.
+*/
 
 void digit_to_character(char* s, char* new_s, int idx)
 {
