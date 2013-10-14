@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 
-int next_index(string s, int cur_idx)
+int next_dot(string s, int cur_idx)
 {
     // separated by dot.
     
@@ -14,14 +14,14 @@ int next_index(string s, int cur_idx)
         ++idx;
     }
 
-    return ++idx;
+    return idx;
 }
 
-int next_int(string s, int cur_idx, int next_idx)
+int next_int(string s, int cur_idx, int next_dot)
 {
     int num = 0;
     int len = s.length();
-    for(int idx = cur_idx; (idx < len) && (idx < next_idx); ++idx)
+    for(int idx = cur_idx; (idx < len) && (idx < next_dot); ++idx)
         num = 10 * num + (s[idx] - '0');
         
     return num;
@@ -63,9 +63,9 @@ string latest_version(vector<string>& versions)
         {
             if(pIndex[i] >= 0)
             {
-                int next_idx = next_index(versions[i], pIndex[i]);
+                int next_idx = next_dot(versions[i], pIndex[i]);
                 iValue[i] = next_int(versions[i], pIndex[i], next_idx);
-                pIndex[i] = next_idx;
+                pIndex[i] = ++next_idx;
                 max_value = max_value > iValue[i] ? max_value : iValue[i];
             }
         }
