@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+bool isTotallyDifferent(string s)
+{
+    int strLen = s.length();
+    int numOfChar[256] = {0};
+    for(int idx = 0; idx < strLen; ++idx)
+    {
+        int num = int(s[idx]);
+        if(numOfChar[num] >= 1)
+            return false;
+        else
+            ++numOfChar[num];
+    }
+
+    return true;
+}
+
+int main()
+{
+    cout << isTotallyDifferent("fie!");
+
+    return 0;
+}
