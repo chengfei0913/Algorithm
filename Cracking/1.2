@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void swap(char& a, char& b)
+{
+    a = a^b;
+    b = a^b;
+    a = a^b;
+}
+
+void reverse(char* str)
+{
+    char* head = str;
+    char* tail = str;
+    while(*tail)
+        ++tail;
+    --tail;
+    while(head < tail)
+        swap(*head++, *tail--);
+
+    cout << str << endl;
+}
+
+int main()
+{
+    char str[] = "gnehc.ief:rohtua";
+    reverse(str);
+
+    return 0;
+}
