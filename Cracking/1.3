@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+bool canConvertTo(string s1, string s2)
+{
+    unsigned int len = s1.length();
+    if(len != s2.length())
+        return false;
+    int numOfChar[256];
+    memset(numOfChar, 0, sizeof(numOfChar));
+    for(unsigned int idx = 0; idx < len; ++idx)
+    {
+        ++numOfChar[int(s1[idx])];
+        --numOfChar[int(s2[idx])];
+    }
+        
+    for(unsigned int k = 0; k < 256; ++k)
+    {
+        if(numOfChar[k])
+            return false;
+    }
+    
+    return true;
+}
+
+int main()
+{
+    string s1 = "gnehc.ief:rohtua";
+    string s2 = "author:fei.cheng";
+    cout << canConvertTo(s1, s2) << endl;
+
+    return 0;
+}
