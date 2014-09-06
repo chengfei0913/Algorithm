@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+void replace(char* str)
+{
+    if(str == NULL)
+        return;
+    char* p = str;
+    unsigned int len = 0;    
+    unsigned int numOfSpace = 0;
+    while(*p != '\0')
+    {
+        ++p;
+        ++len;
+        if(*p == ' ')
+            ++numOfSpace;
+    }
+    unsigned int newLen = len + 2 * numOfSpace;
+    while(numOfSpace)
+    {
+        if(str[len--] != ' ')
+        {
+            str[newLen--] = str[len+1];
+        }
+        else
+        {
+            --numOfSpace;
+            str[newLen--] = '0';
+            str[newLen--] = '2';
+            str[newLen--] = '%';
+        }
+    }
+}
+
+int main()
+{
+    const int len = 100;
+    char s[len] = "author : fei . cheng";
+    cout << s << endl;
+    replace(s);
+    cout << s << endl;
+
+    return 0;
+}
