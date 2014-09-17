@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* compress(char* str)
+char* compress(const char* str)
 {
     if((str == NULL) || (*str == '\0'))
         return str;
@@ -54,11 +54,11 @@ char* compress(char* str)
 
 int main()
 {
-    char test1[] = "";
-    char test2[] = "abbcdf";
-    char test3[] = "aabb";
-    char test4[] = "aabbb";
-    char test5[] = "aabcccccaaa";
+    char* test1 = "";
+    char* test2 = "abbcdf";
+    char* test3 = "aabb";
+    char* test4 = "aabbb";
+    char* test5 = "aabcccccaaa";
     
     printf("%s\n", compress(test1));
     printf("%s\n", compress(test2));
