@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* compress(char* str)
+{
+    if((str == NULL) || (*str == '\0'))
+        return str;
+        
+    int seg_num = 1;
+    char* cur_pt = str;
+    char  cur_val = *str;
+    while(*cur_pt != '\0')
+    {
+        if(*cur_pt != cur_val)
+        {
+            ++seg_num;
+            cur_val = *cur_pt;
+        }
+        ++cur_pt;
+    }
+    if(2 * seg_num >= strlen(str))
+        return str;
+        
+    //else
+    char* new_str = (char*)malloc(2 * seg_num * sizeof(char) + 1);
+    
+    int count = 0;
+    char* fast_pt = str;
+    char* slow_pt = new_str;
+    
+    cur_val = *str;
+    while(*fast_pt != '\0')
+    {
+        if(*fast_pt == cur_val)
+        {
+            ++count;
+              ++fast_pt;
+        }
+        else
+        {
+            *(slow_pt++) = cur_val;
+            *(slow_pt++) = count + '0';
+            count = 0;
+            cur_val = *fast_pt;
+        }  
+    }
+    *(slow_pt++) = cur_val;
+    *(slow_pt++) = count + '0';
+    *slow_pt = '\0';
+    
+    return new_str;
+}
+
+int main()
+{
+    char test1[] = "";
+    char test2[] = "abbcdf";
+    char test3[] = "aabb";
+    char test4[] = "aabbb";
+    char test5[] = "aabcccccaaa";
+    
+    printf("%s\n", compress(test1));
+    printf("%s\n", compress(test2));
+    printf("%s\n", compress(test3));
+    printf("%s\n", compress(test4));
+    printf("%s\n", compress(test5));
+
+    return 0;
+}
