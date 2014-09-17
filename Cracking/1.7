@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int isSubstring(const char* str, const char* sub)
+{
+    int no = -1;
+    int yes = 1;
+    if(str == NULL)
+    {
+        return no;
+    }
+    if(sub == NULL)
+    {
+        return yes;
+    }
+    
+    int len_str = strlen(str);
+    int len_sub = strlen(sub);
+    if(len_str < len_sub)
+    {
+        return no;
+    }
+    
+    int idx;
+    int max = len_str - len_sub;
+    for(idx = 0; idx <= max; ++idx)
+    {
+        if(str[idx] != sub[0])
+        {
+            while((++idx <= max) && (str[idx] != sub[0]));
+            if(idx <= max)
+            {
+                int k;
+                int j = idx + 1;
+                int end = idx + len_sub;
+                for(k = 1; (j < end) && (str[j] == sub[k]); ++j, ++k);
+                if(j == end)
+                {
+                    return yes;
+                }
+            }
+        }
+        
+    }
+    
+    return no;
+}
+
+int canRotate(const char* s1, const char* s2)
+{
+    int no = -1;
+    int yes = 1;
+    
+    if(s1 == NULL)
+    {
+        if(s2 == NULL)
+            return yes;
+        return no;
+    }
+    if((s2 == NULL) && (s1 != NULL))
+    {
+        return no;
+    }
+    
+    int len1 = strlen(s1);
+    int len2 = strlen(s2);
+    if(len1 != len2)
+    {
+        return no;
+    }
+    
+    int i, j;
+    char* long_str = (char*)malloc(2 * len1 * sizeof(char) + 1);
+    for(i = 0, j = 0; i < len1; ++i, ++j)
+    {
+        long_str[i] = s1[j];
+    }
+    for(j = 0; j < len1; ++i, ++j)
+    {
+        long_str[i] = s1[j];
+    }
+    long_str[i] = '\0';
+    int result = isSubstring(long_str, s2);
+    
+    free(long_str);
+    return result;
+}
+
+int main()
+{
+    char* s1= "art";
+    char* s2= "tar";
+    
+    printf("%d", canRotate(s1, s2));
+
+    return 0;
+}
